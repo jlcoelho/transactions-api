@@ -1,0 +1,27 @@
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "joao",
+    "document": "99224861059",
+    "typeClient": "COMMON",
+    "email": "joao@hotmail.com",
+    "password": "123465",
+    "balance": 100
+}
+
+###
+
+POST http://localhost:3000/transaction
+Content-Type: application/json
+
+{
+    "value": 10,
+    "payer": "d0efd3d4-5985-492c-b4e3-c26b1653f089",
+    "payee": "7d9c6595-bb31-48c8-b6f7-017db76a7d21"
+}
+
+###
+
+GET http://localhost:3000/users?take=20&skip=0
+Content-Type: application/json
