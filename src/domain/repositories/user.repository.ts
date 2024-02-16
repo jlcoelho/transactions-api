@@ -7,4 +7,5 @@ export interface IUserRepository extends BaseRepository {
   update: (entity: User) => Promise<void>;
   findById: (entityId: UniqueEntityID) => Promise<User | null>;
   findByEmail(email: string): Promise<User | null>;
+  findAll(take?: number, skip?: number): Promise<User[]>;
 }

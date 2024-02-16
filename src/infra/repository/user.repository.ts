@@ -43,6 +43,14 @@ export class PrismaUserRepository
     });
   }
 
+  async findAll(take: number = 25, skip: number = 0): Promise<User[]> {
+    const models = await this.uow.user.findMany({
+      take: Number(take),
+      skip: Number(skip),
+    });
+    return models.map((model) => UserModelMapper.toEntity(model));
+  }
+
   getEntity(): new (...args: any[]) => User {
     return User;
   }

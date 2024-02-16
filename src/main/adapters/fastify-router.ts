@@ -10,7 +10,10 @@ type Adapter = (controller: Controller) => RouteHandlerMethod;
 export const adaptFastifyRoute: Adapter =
   (controller) => async (request: FastifyRequest, reply: FastifyReply) => {
     const requestBody = request.body as Record<string, any>;
-    const { statusCode, data } = await controller.handle({ ...requestBody });
+    const { statusCode, data } = await controller.handle({
+      ...requestBody,
+      ...(request.query as Record<string, any>),
+    });
     const responsePayload = [200, 204].includes(statusCode)
       ? data
       : {
