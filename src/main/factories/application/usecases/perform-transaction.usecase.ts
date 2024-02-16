@@ -2,7 +2,7 @@ import { PerformTransactionUseCase } from "@/application/usecases/perform-transa
 
 import { makeTransactionRepository } from "../../infra/transaction.repository";
 import { makeUserRepository } from "../../infra/user.repository";
-import { makeUnitOfWork } from "../../infra/unit-of-work.factory";
+import { makeUnitOfWork } from "../../infra/unit-of-work.repository";
 import { makeNotificationService } from "../services/notification";
 import { makeAuthorizationService } from "../services/authorization";
 

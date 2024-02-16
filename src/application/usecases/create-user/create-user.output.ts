@@ -4,11 +4,11 @@ import { type Either } from "@/shared/domain/validators/either";
 import { type EntityValidationError } from "@/shared/domain/validators/validation.error";
 
 export type CreateUserOutput = {
+  id: string;
   name: string;
   document: string;
   typeClient: string;
   email: string;
-  password: string;
   balance?: number;
   createdAt?: Date;
 };

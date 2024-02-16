@@ -42,11 +42,11 @@ export class CreateUserUseCase
     await this.userRepository.insert(user);
 
     return new Right({
+      id: user.entityId.value,
       name: user.name,
       document: user.document.document,
       typeClient: user.document.typeCLient,
       email: user.email,
-      password: user.password,
       balance: user.balance,
       createdAt: user.createdAt,
     });
