@@ -1,18 +1,6 @@
-version: "3"
+version: "3.8"
 
 services:
-  app:
-    build: .
-    command: ./.docker/start.sh
-    ports:
-      - 3000:3000
-    volumes:
-      - .:/home/node/app
-    networks:
-      - app-network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-
   db:
     image: postgres:latest
     restart: always
@@ -24,6 +12,27 @@ services:
       POSTGRES_USER: docker
     networks:
       - app-network
+    tty: true
+    volumes:
+      - .:/home/node/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+      
+  app:
+    build: .
+    entrypoint: dockerize -wait tcp://db:5432 -timeout 20s docker-entrypoint.sh
+    command: ["./start.sh"]
+    env_file: .env
+    ports:
+      - 3001:3000
+    tty: true
+    volumes:
+      - .:/home/node/app
+    networks:
+      - app-network
+    depends_on:
+      - db
+
 
 networks:
   app-network:

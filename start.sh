@@ -2,5 +2,4 @@
 
 npm install
 npm run migrate
-
-tail -f /dev/null
+npm run start:dev
