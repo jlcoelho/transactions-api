@@ -6,9 +6,18 @@ API responsável por criar um usuário com seu saldo e realizar transferências 
 * <b>Docker e Docker Compose</b>
 
 ## Setup do projeto
-Faça o clone do repositório e entre na pasta e rode os seguintes comando
-- <b>cp .env.example .env</b>
-- <b>docker compose up -d</b>
+Execute os comandos para rodar o projeto via docker
+
+```bash
+$ git clone git@github.com:jlcoelho/transactions-api.git
+
+$ cd transactions-api
+
+$ cp .example.env .env
+
+$ docker compose up
+
+```
 
 ## Criar um usuário
 Para criar um usuário, basta fazer uma requisição no endpoint abaixo.
